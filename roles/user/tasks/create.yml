@@ -1,7 +1,10 @@
-- name: Create docker group
+- name: Create groups for {{ username }}
   group:
-    name: docker
+    name: "{{ item }}"
     state: present
+  loop:
+    - docker
+    - cron
 
 - name: Create user {{ username }}
   user:
