@@ -10,8 +10,10 @@
   changed_when: true
 
 - name: Keep certs updated
+  become: true
   cron:
     name: update certs
+    user: "{{ username }}"
     state: present
     minute: "0"
     hour: "0"

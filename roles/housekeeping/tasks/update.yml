@@ -14,8 +14,10 @@
     upgrade: true
 
 - name: Monthly updates
+  become: true
   cron:
     name: update system
+    user: "{{ username }}"
     state: present
     minute: "0"
     hour: "0"

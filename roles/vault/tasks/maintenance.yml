@@ -5,8 +5,10 @@
     packages: "cron"
 
 - name: Monthly updates
+  become: true
   cron:
     name: update vaultwarden
+    user: "{{ username }}"
     state: present
     minute: "0"
     hour: "0"
@@ -32,8 +34,10 @@
         mode: 0755
 
     - name: Weekly backups
+      become: true
       cron:
         name: "backup vault"
+        user: "{{ username }}"
         state: "present"
         special_time: "weekly"
         job: >

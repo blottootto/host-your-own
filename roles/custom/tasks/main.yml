@@ -8,8 +8,8 @@
     - name: Copy configs for root
       become: true
       import_tasks: root.yml
-
       when: dotfiles_repo is defined and dotfiles_repo | length > 0
+
     - name: Install basick packages
       import_tasks: install.yml
 

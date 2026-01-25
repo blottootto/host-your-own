@@ -5,8 +5,10 @@
     packages: "cron"
 
 - name: Monthly updates
+  become: true
   cron:
     name: update nextcloud
+    user: "{{ username }}"
     state: present
     minute: "0"
     hour: "0"
@@ -36,16 +38,20 @@
         mode: 0755
 
     - name: Weekly backups
+      become: true
       cron:
         name: "backup cloud"
+        user: "{{ username }}"
         state: "present"
         special_time: "weekly"
         job: >
           sudo /bin/cp -urp {{ data_dir }}/* {{ backup_dir }}
 
 - name: Enable auto-refresh with Cron
+  become: true
   cron:
     name: "cloud - cron"
+    user: "{{ username }}"
     state: "present"
     minute: "*/5"
     job: >

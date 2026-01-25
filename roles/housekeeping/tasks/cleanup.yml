@@ -1,6 +1,8 @@
 - name: Clean up docker
+  become: true
   cron:
     name: docker prune
+    user: "{{ username }}"
     state: present
     minute: "0"
     hour: "0"

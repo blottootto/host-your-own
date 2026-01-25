@@ -5,8 +5,10 @@
     packages: "cron"
 
 - name: Monthly updates
+  become: true
   cron:
     name: update gitea
+    user: "{{ username }}"
     state: present
     minute: "0"
     hour: "0"
@@ -36,8 +38,10 @@
         mode: 0755
 
     - name: Weekly backups
+      become: true
       cron:
         name: "backup gitea"
+        user: "{{ username }}"
         state: "present"
         special_time: "weekly"
         job: >
