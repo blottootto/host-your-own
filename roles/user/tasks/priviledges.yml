@@ -1,3 +1,9 @@
+- name: Install sudo
+  import_role:
+    name: common_roles/install_latest
+  vars:
+    packages: "sudo"
+
 - name: Password-less sudo for {{ username }}
   lineinfile:
     dest: /etc/sudoers
