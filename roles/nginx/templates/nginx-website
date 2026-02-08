@@ -14,6 +14,8 @@ server {
     open_file_cache_errors   on;
 
     location / {
+        limit_req zone=custom_limit burst=4 nodelay;
+        limit_req_status 429;
         try_files $uri $uri/ =404 ;
     }
 
@@ -36,6 +38,8 @@ server {
     index index.html index.htm index.nginx-debian.html ;
 
     location / {
+        limit_req zone=custom_limit burst=4 nodelay;
+        limit_req_status 429;
         try_files $uri $uri/ =404 ;
     }
 }
