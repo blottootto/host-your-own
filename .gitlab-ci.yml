@@ -16,14 +16,14 @@ default:
       ---
       username: "ansible"
       domain: "localhost"
-      email: "an@email.address"
+      email: "office@wattwizard.ca"
       nextcloud_username: "admin_user"
       nextcloud_password: "admin_pwd"
       gitea_username: "admin_user"
       gitea_password: "admin_pwd"
       vaultwarden_password: "admin_panel_pwd"
       ssh_key: "~/.ssh/id_rsa"
-      dotfiles_repo: "https://gitlab.com/ericdriussi/dotfiles.git"
+# dotfiles_repo: "https://gitlab.com/ericdriussi/dotfiles.git"
       EOF
 
 run_job:

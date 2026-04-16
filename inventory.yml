@@ -22,6 +22,9 @@ all:
       umami:
         subdomain: "umami"
         port: 85
+      cloudpanel:
+        subdomain: "cloudpanel"
+        port: 8443
     ports:
       ssh: 22
       http: 80

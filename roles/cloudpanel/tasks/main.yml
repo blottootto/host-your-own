@@ -1,0 +1,30 @@
+- name: Show target host
+  debug:
+    msg: "Installing CloudPanel on {{ ansible_host }}"
+
+- name: Ensure required packages are installed
+  ansible.builtin.apt:
+    name:
+      - curl
+      - sudo
+      - gnupg
+    state: present
+    update_cache: true
+
+- name: Download CloudPanel installer
+  ansible.builtin.get_url:
+    url: "{{ cloudpanel_install_url }}"
+    dest: /root/cloudpanel-install.sh
+    mode: "0755"
+
+- name: Run CloudPanel installer
+  ansible.builtin.command: >
+    bash /root/cloudpanel-install.sh
+    --db-engine {{ cloudpanel_db_engine }}
+  args:
+    creates: /usr/local/cloudpanel
+  register: cloudpanel_install
+
+- name: Print installer output
+  debug:
+    var: cloudpanel_install.stdout

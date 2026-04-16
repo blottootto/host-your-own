@@ -80,3 +80,8 @@
       become: true
       tags:
         - welcome
+
+    - role: cloudpanel
+      become: true
+      tags:
+        - cloudpanel
